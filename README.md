@@ -1,40 +1,48 @@
 
+## Physics Lab Automation with IoT
 
-# Proyecto de automatización de laboratorios de física con IoT
+**Project Overview:**
 
-Este proyecto busca automatizar los laboratorios de física de la Universidad Católica Boliviana "San Pablo" utilizando tecnologías de IoT.
+This project aims to automate physics labs at the Universidad Católica Boliviana "San Pablo" using IoT technologies.
 
-## Descripción 
+**Description:**
 
-El proyecto consiste en desarrollar sistemas basados en Arduino y Raspberry Pi para automatizar los experimentos de los laboratorios de física. Se utilizarán sensores para capturar datos en tiempo real y enviarlos a una base de datos en la nube.
+The project involves developing Arduino and Raspberry Pi-based systems to automate physics lab experiments. Sensors will be used to capture real-time data and send it to a cloud database.
 
-Una aplicación web permitirá monitorear y controlar los experimentos remotamente, así como visualizar y analizar los datos.
+A web application will allow for remote monitoring and control of experiments, as well as visualization and analysis of the data.
 
-## Videos
+**Videos:**
 
-Aquí hay dos videos que muestran el progreso del proyecto:
+Here are two videos showcasing the project's progress:
 
-- https://youtu.be/kZzk4U3q39E
-- https://youtu.be/7lG9F81cjdA
+- [https://youtu.be/kZzk4U3q39E](https://youtu.be/kZzk4U3q39E)
+- [https://youtu.be/7lG9F81cjdA](https://youtu.be/7lG9F81cjdA)
 
-## Página web
+**Website:**
 
-Puedes ver el proyecto en acción en la siguiente página web:
+You can see the project in action on the following website:
 
-- https://psiphilabo.web.app
+- [https://psiphilabo.web.app](https://psiphilabo.web.app)
 
-La página muestra una demo de la aplicación web y el sistema en funcionamiento.
+The website shows a demo of the web application and the system in operation.
 
-## Tecnologías
+**Technologies:**
 
-Las principales tecnologías utilizadas en el proyecto son:
+The main technologies used in the project are:
 
 - Arduino
-- Raspberry Pi 
-- Sensores
+- Raspberry Pi
+- Sensors
 - Firebase Realtime Database
 - JavaScript
 - Chart.js
 - HTML/CSS
+
+**Additional Information:**
+
+The project is still under development, and more features are being added.
+
+**Feel free to contact us if you have any questions or want to learn more about the project.**
+
 
 
