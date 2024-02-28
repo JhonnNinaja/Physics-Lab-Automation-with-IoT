@@ -37,6 +37,4 @@ Las principales tecnologías utilizadas en el proyecto son:
 - Chart.js
 - HTML/CSS
 
-## Contacto 
 
-Si tienes preguntas o quieres contribuir al proyecto, no dudes en contactarnos.
