@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,800&display=swap');
+
+:root {
+    --color-one: rgb(27, 27, 27);
+    --color-light: rgba(10, 10, 17, 0.185);
+    --box-shadow: 0.5rem 1rem 2rem var(--color-light);
+    --border-radius: 10px;
+    --font-color: #555;
+    --icon-color: #666;
+    --color-backgroud: #e9e8ec;
+    --color-primary: #a4b413;
+    --transition-toggle: 0.3s ease-in-out;
+    --clr: #161616;
+}
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Poppins';
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    
+}
+
+body{
+
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    user-select: none;
+    background: var(--color-backgroud);
+    color: var(--color-dark);
+}
+
+a {
+    color: var(--color-dark)
+ }
+
+ /*-----------------*/
+.container{
+    display: flex;
+
+    height: auto;
+    width: 98vw;
+}
+
+
+ .container .sidebar{
+    background-color: var(--color-one);
+    
+    padding: 2px;
+    position: fixed;
+    border-radius: var(--border-radius);
+    width: 230px;
+    transition: var(--transition-toggle);
+    height: 80vh;
+    margin: 0.6rem;
+    box-shadow: var(--box-shadow);
+ }
+
+ .sidebar .nowrap {
+    white-space: nowrap;
+}
+
+.sidebar .toggler {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 13px;
+    height: 30px;
+}   
+
+.sidebar .toggler .logo i{
+    font-size: 25px;
+    color: #fff;
+}
+
+.sidebar .toggler .toggle {
+    height: 25px;
+    width: auto;
+    transition: transform .6s;
+    text-align: center;
+    
+    z-index: 300;
+    transition-delay: .2s;
+  
+    
+    
+}
+.sidebar .toggler .toggle i{
+
+    margin-top: 2px;
+
+    font-size: 20px;
+    color: var(--icon-color);
+    cursor: pointer;
+    transition: .1s;
+    
+}
+
+.sidebar .search {
+    display: flex;
+    border-radius: var(--border-radius);
+    height: 40px;
+    margin: 10px;
+    border: 2px solid #222;
+}
+.sidebar .search input {
+    width: 100%;
+    color: #fff;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    transition: .7s;
+    transition-delay: .5s;
+    border: 0;
+}
+
+.sidebar .search button {
+    background-color: transparent;
+    outline: none;
+    width: 40px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
+.sidebar ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    height: 80%;
+}
+.sidebar ul li {
+    list-style-type: none;
+    padding: 6px;
+    position: relative;
+}
+.sidebar ul li:last-child {
+
+    /*move li to bottom*/
+    margin-top: auto;
+
+}
+.sidebar ul li a{
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    position: relative;
+    transition: 0.7s;
+    border-radius: 6px;
+    overflow: hidden;
+    
+}
+
+.sidebar ul li:hover span.title {
+    visibility: visible;
+}
+
+.sidebar ul li a:hover{
+    background-color: #222;
+}
+
+.sidebar ul li a:hover span {
+    color: #fff !important;
+}
+
+.sidebar ul li a.active {
+    background-color: #222;
+    color: #fff;
+}
+
+.sidebar ul li a.active span {
+    color: #dcdcdc !important;
+}
+
+.sidebar ul li a i.icon {
+    color: #666;
+    font-size: 15px;
+}
+
+.sidebar ul li a span.text {
+    margin-left: 19px;
+    line-height: 30px;
+    color: var(--font-color);
+}
+
+.sidebar ul li span.title {
+    position: absolute;
+    right: -100px;
+    top: 0px;
+    padding: 10px 15px;
+    z-index: 1;
+    visibility: hidden;
+    display: none;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0px 0px 2px 0px #222;
+    width: 100px;
+}
+
+.sidebar ul li span.title::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%) rotate(50deg);
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+}
+
+.sidebar.toggle-sidebar {
+    width: 60px;
+}
+
+.sidebar.toggle-sidebar .search input {
+    width: 0%;
+}
+.sidebar.toggle-sidebar .logo {
+    display: none;
+}
+
+.sidebar.toggle-sidebar ul li span.title {
+    display: block !important;
+}
+.sidebar.toggle-sidebar .toggle {
+  
+    transform: rotate(180deg);
+    margin: 0 auto;
+    
+}
+/*--------------------------botton bar -----------------*/
+.navigation {
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+
+    background: var(--color-one);
+    display: none;
+    place-content: center ;
+}
+.navigation ul {
+    display: flex;
+    width: 350px;
+}
+.navigation ul li {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--color-backgroud);
+    transition: 0.5s;
+}
+.navigation ul li.active a .icon {
+    transform: translateY(-32px);
+}
+.navigation ul li a .text {
+    position: absolute;
+    color: var(--color-backgroud);
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.navigation ul li.active a .text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+.indicator {
+
+    position: absolute;
+    top: -50%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 6px solid var(--color-backgroud);
+    transition: 0.5s;
+}
+.indicator::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 var(--color-backgroud);
+}
+.indicator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 var(--color-backgroud);
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(70px * 0));
+}
+.navigation ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(70px * 1));
+}
+.navigation ul li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(70px * 2));
+}
+.navigation ul li:nth-child(4).active ~ .indicator {
+    transform: translateX(calc(70px * 3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator {
+    transform: translateX(calc(70px * 4));
+}
+
+/*-----------------------main--------------------*/
+.general-box{
+    display: block;
+    background-color: rgb(255, 255, 255);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 50rem;
+    min-width: 20rem;
+    margin: 0.6rem auto;
+    padding: 0.6rem;
+    transition: all 300ms ease;
+    
+  
+    
+}   
+
+main{
+    
+    margin-left: 260px;
+    margin-top: 0.6rem;;
+    
+    height: auto;
+    
+    transition: var(--transition-toggle);
+    padding-bottom: 7rem;
+    
+}
+
+main.toggle-main {
+ 
+    margin-left: 80px;
+}
+
+/*---------------------id login-form-----------------*/
+.loginBox {
+    width: 400px;
+    height: 500px;
+    background: #fff;
+    color: #000;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+#login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}   
+#login-form .form-elements-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+#login-form .form-elements-container #input-email, #input-password{
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    background: transparent;
+    transition: 0.5s;
+}
+#login-form .form-elements-container #input-email:focus, #input-password:focus{
+    border-bottom: 2px solid #000;
+}
+
+#login-form .form-elements-container #input-email::placeholder, #input-password::placeholder{
+    color: rgba(0, 0, 0, 0.5);
+}
+#login-form .form-elements-container #input-email:focus::placeholder, #input-password:focus::placeholder{
+    color: transparent;
+}
+#login-form .form-elements-container #login-button{
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+#back-button{
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    padding: 9px 150px;
+    border: none;
+    outline: none;
+    background: #000;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    align-items: center;
+}
+#google-login {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+    padding: 9px 125px;
+    border: none;
+    outline: none;
+    background: #ec5f00;
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    align-items: center;
+    white-space: nowrap;
+}
+
+
+.logout-active
+    {
+        display: none;
+    }
+/*-----------------------querys--------------------*/
+@media screen and (max-width: 1200px){
+    .laboratories-panel{
+        flex-direction: row;
+    }
+    .logout-active
+    {
+        display: none;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+
+    .container{
+        width: 100%;
+        
+    }
+    .sidebar{
+        display: none;
+    }
+    main {
+        width: 100%;
+        margin: 0;
+        height: auto;
+        
+    }
+    main.toggle-main {
+        
+        margin-left: 0px;
+    
+    }
+    .navigation{
+        display: grid;
+    }
+
+    .laboratories-panel{
+        flex-direction: column;
+    }
+
+    .logout-active
+    {
+        display: block;
+    }
+    
+}
+
+

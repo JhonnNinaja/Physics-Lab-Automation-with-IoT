@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2d125606f6.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  
+ 
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/dynamic.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/regression@2.0.1/dist/regression.min.js"></script>
+
+    
+    
+    <div class="loginBox">
+        <form id="login-form" style="display: block;">
+            <div class="form-elements-container">
+              <label for="input-email"><b>Email</b></label>
+              <input type="text" placeholder="Enter Email" id="input-email" required>
+        
+              <label for="input-password"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" id="input-password" required>
+                
+              <button type="submit" id="login-button">Login</button>
+              
+              <p id="error-message" style="color:red;"></p>
+              <a id="google-login">Google login</a>
+            </div>
+            
+            
+
+
+          </form>
+          
+            
+          <a id="back-button" href="./index.html">Back</a>
+          
+    </div>
+    
+    <div class="container" style="display: none;">
+        <div class="sidebar">
+            <div class="toggler">
+                <div class="logo">
+                    <i class="fa-brands fa-drupal"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="search">
+                <button class="bi-search"></button>
+                <input type="text" placeholder="Search">
+            </div>
+            <ul>
+                <li>
+                    <a href="#" class="dashboard_btn">
+                        <i class="fa-solid fa-house icon"></i>
+                        <span class="text">Dashboard</span> 
+                    </a>
+                    <span class="title">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#" class="inclination_btn">
+                        <i class="fa-solid fa-screwdriver-wrench icon"></i>
+                        <span class="text">Inclination</span> 
+                    </a>
+                    <span class="title">Inclination</span>
+                </li>
+                <li>
+                    <a href="#" class="result_btn">
+                        <i class="fa-solid fa-bell icon"></i>
+                        <span class="text">Results</span> 
+                    </a>
+                    <span class="title">Results</span> 
+                </li>
+                <li>
+                    <a href="#" class="test_btn">
+                        <i class="fa-solid fa-vr-cardboard icon"></i>
+                        <span class="text">Info</span> 
+                    </a>
+                    <span class="title">Info</span> 
+                </li>
+
+                <li>
+                    <a class="SignOut">
+                        <i class="fa-solid fa-circle-arrow-left icon"></i>
+                        <span class="text nowrap">SignOut</span>
+                    </a>
+                    <span class="title">SignOut</span>
+                </li>
+                <li>
+                    <a href="./index.html">
+                        <i class="fa-solid fa-circle-arrow-left icon"></i>
+                        <span class="text nowrap">Back</span>
+                    </a>
+                    <span class="title">Back</span>
+                </li>
+            </ul>
+        </div>
+        <div class="navigation">
+            <ul id="naviga">
+                <li class="list active">
+                    <a href="#" class="dashboard_btn_nav">
+                        <span class="icon">
+                            <i class="fa-solid fa-house"></i>
+                        </span>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="inclination_btn_nav">
+                        <span class="icon">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </span>
+                        <span class="text">Inclination</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="result_btn_nav">
+                        <span class="icon">
+                            <i class="fa-solid fa-bell"></i>
+                        </span>
+                        <span class="text">Results</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="test_btn_nav">
+                        <span class="icon">
+                            <i class="fa-solid fa-vr-cardboard"></i>
+                        </span>
+                        <span class="text">info</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="./index.html" onclick="show('home')">
+                        <span class="icon">
+                            <i class="fa-solid fa-circle-arrow-left"></i>
+                        </span>
+                        <span class="text">Back</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+        <main>
+            <div class="dashboard">
+                <h1>Dashboard</h1>
+
+                <div class="general-box bloquear">
+                    <h2>Distancia</h2>
+                    
+                    <div class="distance-box">
+
+                            <h3>Distancia [m]:  </h3>
+                            <h3 id="distance">0</h3>
+                        
+                    </div>
+                    <small>Para proceder con el laboratorio, debe de Actualizar la distancia en la
+                         parte inferior</small>
+                </div>
+                <div class="general-box" >
+                    
+                    <div class="wrapper">
+                        <table id="crud">
+                            <caption>Data</caption>
+                            <thead id="thead_1">
+                                <tr>
+                                    <td style="display: none;">ID</td>
+                                    <td>No</td>
+                                    <td>Masa</td>
+                                    <td>T1</td>
+                                    <td>T2</td>
+                                    <td>T3</td>
+                                    <td>T4</td>
+                                    <td>T5</td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_1">
+                                
+                            </tbody>
+                        </table>
+                        <button class="add-data">Añadir dato</button>
+                    </div>
+                </div>
+                <div class="general-box bloquear">
+                    <h2>Modificar Masa</h2>
+                    <div class="form-element">
+                        <label for="email">Masa</label>
+                        <input type="text" id="input-no" placeholder="No">
+                        <input type="text" id="input-mass" placeholder="valor masa [kg]">
+                        <button class="modify-data">Mod</button>
+                    </div>
+                </div>
+
+                <div class="general-box bloquear">
+                    <h2>Actualizar distancia</h2>
+                    <div class="form-element">
+                        <label for="input-distance">Distancia</label>
+                        <input type="text" id="input-distance" placeholder="valor distancia [m]">
+                        <button class="modify-distance">Set X</button>
+                    </div>
+                </div>
+                
+
+                
+            </div>
+            <div class="inclination">
+                <h1>Inclinación</h1>
+                <div class="general-box bloquear">
+                    <h2>Actualizar angulo</h2>
+                    <div class="form-element">
+                        <label for="input-angle">Angulo</label>
+                        <input type="text" id="input-angle" placeholder="Enter deg to 10°">
+                        <button class="modify-angle">Set deg</button>
+                    </div>
+                </div>
+            </div>
+            <div class="result">
+                <h1>Results</h1>
+
+                <div class="general-box bloquear">
+                    <h2>Actualizar resultados</h2>
+                    <div class="update_result_btn">
+                        
+                        <button class="update-result">Actualizar</button>
+                    </div>
+                </div>
+
+                <div class="general-box" >
+
+                    <h2>Tiempo promedio:</h2>
+                    
+                    <div class="wrapper">
+
+                        <div align = center> 
+                            <h1>\[t_p = {{t_1 + t_2 + ... + t_n} \over n}\]</h1>
+                            
+                            <h3 align = left>Donde:</h3>
+                            
+                            <h2 style="display:inline;">\(n\)</h2> <h4 style="display:inline;">: Número de datos.</h4>
+                            <br>
+                            <h2 style="display:inline;">\(t_p\)</h2> <h4 style="display:inline;">: Tiempo promedio </h4><h4 style="display:inline;">\([s].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(t_n\)</h2> <h4 style="display:inline;">: Tiempo "n" </h4><h4 style="display:inline;">\([s].\)</h4>
+                            <br>
+                        </div>    
+
+                        <table id="crud">
+                            <caption>Tiempo de recorrido</caption>                       
+
+                            <thead id="thead_2">
+                                <tr>
+                                    <td style="display: none;">ID</td>
+                                    <td>No</td>
+                                    <td>Masa [kg]</td>
+                                    <td>TPROM [s]</td>   
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_2">
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+                
+                <div class="general-box" >
+
+                    <h2>Cálculo de la aceleración:</h2>
+                    
+                    <div class="wrapper">
+                        
+                        <div align = center> 
+                            <h1>\[x = {v_0 t \pm {1 \over 2} a t^2}\]</h1>
+                            <h3 align = left>Como:</h3>
+                            <h2>\(v_0 = 0\)</h2>
+
+                            <h2>\[x = {{1 \over 2} a t^2} \Rightarrow a = {{2x \over t^2}} \]</h2>
+
+                            <h3 align = left>Donde:</h3>
+                            
+                            <h2 style="display:inline;">\(x\)</h2> <h4 style="display:inline;">: Distancia </h4><h4 style="display:inline;">\([m].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(v_0\)</h2> <h4 style="display:inline;">: Velocidad inicial </h4><h4 style="display:inline;">\([m/s].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(a\)</h2> <h4 style="display:inline;">: Aceleración </h4><h4 style="display:inline;">\([m/s^2].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(t_n\)</h2> <h4 style="display:inline;">: Tiempo "n" </h4><h4 style="display:inline;">\([s].\)</h4>
+                            <br>
+                        </div> 
+
+                        <table id="crud">
+                            <caption>Aceleración del cuerpo</caption>
+
+                            <thead id="thead_3">
+                                <tr>
+                                    <td style="display: none;">ID</td>
+                                    <td>No</td>
+                                    <td>Tprom [s]</td>
+                                    <td>Acel. [m/(s^2)]</td>   
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_3">
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+                <div class="general-box" >
+
+                    <h2>Segunda ley de Newton:</h2>
+                    
+                    <div class="wrapper">
+
+                        <div align = center> 
+                            <h1>\[F = ma\]</h1>
+
+                            <h3 align = left>Donde:</h3>
+                            
+                            <h2 style="display:inline;">\(F\)</h2> <h4 style="display:inline;">: Fuerza </h4><h4 style="display:inline;">\([N].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(m\)</h2> <h4 style="display:inline;">: masa </h4><h4 style="display:inline;">\([kg].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(a\)</h2> <h4 style="display:inline;">: Aceleración </h4><h4 style="display:inline;">\([m/s^2].\)</h4>
+                            <br>
+                        </div> 
+
+                        <table id="crud">
+                            <caption>Fuerza aplicada sobre el movil</caption>
+
+                            <thead id="thead_4">
+                                <tr>
+                                    <td style="display: none;">ID</td>
+                                    <td>No</td>
+                                    <td>Masa [kg]</td>
+                                    <td>F [N]</td>   
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_4">
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+                <div class="general-box" >
+
+                    <h2>Analogía matemática lineal:</h2>
+                    
+                    <div class="wrapper">
+
+                        <div align = center> 
+                            <h1 style="margin-right: 60px;">\[F = ma\]</h1>
+                            <h1 style="margin-right: 60px;">\[\downarrow \;\;\;\; \downarrow \downarrow \]</h1>
+                            <h1>\[y = Bx+A\]</h1>
+
+                            <h3 align = left>Donde:</h3>
+                            
+                            <h2 style="display:inline;">\(y\)</h2> <h4 style="display:inline;">: Fuerza </h4><h4 style="display:inline;">\([N].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(B\)</h2> <h4 style="display:inline;">: masa </h4><h4 style="display:inline;">\([kg].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(x\)</h2> <h4 style="display:inline;">: Aceleración </h4><h4 style="display:inline;">\([m/s^2].\)</h4>
+                            <br>
+                            <h2 style="display:inline;">\(A\)</h2> <h4 style="display:inline;">: Intersección con el eje "y" </h4>
+                            <br>
+                        </div> 
+
+                        <table id="crud">
+                            <caption>Resumen de datos</caption>
+
+                            <thead id="thead_5">
+                                <tr>
+                                    <td style="display: none;">ID</td>
+                                    <td>No</td>
+                                    <td>Acel. [m/(s^2)]</td>
+                                    <td>F (N)</td>   
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_5">
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+                <div class="general-box">
+                    <h2>Regresión lineal:</h2>
+            
+                    <div align = center> 
+                        <h1 id="linear_equation_modify">\[y = Bx+A\]</h1>
+                    </div> 
+                    <h2 align=left>\[R^2:\]</h2>
+            
+                    <div align = center> 
+                        <h1 id="correlation_modify">0</h1>
+                    </div> 
+                </div>
+                <div class="general-box">
+                    <h2>Fuerza Vs. Aceleración</h2>
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="test">
+                <h1>Ecuaciones usadas:</h1>
+                <div class="general-box">
+                    <h2 style="width: 30rem;">Tiempo promedio:</h2>
+                    
+                    <div align = center> 
+                        <h1>\[t_p = {{t_1 + t_2 + ... + t_n} \over n}\]</h1>
+                        
+                        <h3 align = left>Donde:</h3>
+                        
+                        <h2 style="display:inline;">\(n\)</h2> <h4 style="display:inline;">: Número de datos.</h4>
+                        <br>
+                        <h2 style="display:inline;">\(t_p\)</h2> <h4 style="display:inline;">: Tiempo promedio </h4><h4 style="display:inline;">\([s].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(t_n\)</h2> <h4 style="display:inline;">: Tiempo "n" </h4><h4 style="display:inline;">\([s].\)</h4>
+                        <br>
+                    </div>   
+
+                    <h2>Cálculo de la aceleración:</h2>
+                                            
+                    <div align = center> 
+                        <h1>\[x = {v_0 t \pm {1 \over 2} a t^2}\]</h1>
+                        <h3 align = left>Como:</h3>
+                        <h2>\(v_0 = 0\)</h2>
+
+                        <h2>\[x = {{1 \over 2} a t^2} \Rightarrow a = {{2x \over t^2}} \]</h2>
+
+                        <h3 align = left>Donde:</h3>
+                        
+                        <h2 style="display:inline;">\(x\)</h2> <h4 style="display:inline;">: Distancia </h4><h4 style="display:inline;">\([m].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(v_0\)</h2> <h4 style="display:inline;">: Velocidad inicial </h4><h4 style="display:inline;">\([m/s].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(a\)</h2> <h4 style="display:inline;">: Aceleración </h4><h4 style="display:inline;">\([m/s^2].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(t_n\)</h2> <h4 style="display:inline;">: Tiempo "n" </h4><h4 style="display:inline;">\([s].\)</h4>
+                        <br>
+                    </div> 
+
+                    <h2>Segunda ley de Newton:</h2>
+                        
+                    <div align = center> 
+                        <h1>\[F = ma\]</h1>
+
+                        <h3 align = left>Donde:</h3>
+                        
+                        <h2 style="display:inline;">\(F\)</h2> <h4 style="display:inline;">: Fuerza </h4><h4 style="display:inline;">\([N].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(m\)</h2> <h4 style="display:inline;">: masa </h4><h4 style="display:inline;">\([kg].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(a\)</h2> <h4 style="display:inline;">: Aceleración </h4><h4 style="display:inline;">\([m/s^2].\)</h4>
+                        <br>
+                    </div> 
+
+                    <h2>Analogía matemática lineal:</h2>
+            
+                    <div align = center> 
+                        <h1 style="margin-right: 60px;">\[F = ma\]</h1>
+                        <h1 style="margin-right: 60px;">\[\downarrow \;\;\;\; \downarrow \downarrow \]</h1>
+                        <h1>\[y = Bx+A\]</h1>
+
+                        <h3 align = left>Donde:</h3>
+                        
+                        <h2 style="display:inline;">\(y\)</h2> <h4 style="display:inline;">: Fuerza </h4><h4 style="display:inline;">\([N].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(B\)</h2> <h4 style="display:inline;">: masa </h4><h4 style="display:inline;">\([kg].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(x\)</h2> <h4 style="display:inline;">: Aceleración </h4><h4 style="display:inline;">\([m/s^2].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(A\)</h2> <h4 style="display:inline;">: Intersección con el eje "y" </h4>
+                        <br>
+                    </div> 
+
+
+
+                </div>
+            </div>
+            <div class="general-box logout-active" >
+                <h2>Log Out</h2>
+                <button class="modify-data SignOut">Log Out</button>
+            </div>
+        </main>
+        
+    </div>
+    <script type="module" src="./scripts/auth_dynamic.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+    <script type="module" src="./scripts/dynamic.js"></script>
+</body>
+</html>

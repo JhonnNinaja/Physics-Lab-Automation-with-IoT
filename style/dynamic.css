@@ -1,0 +1,145 @@
+.wrapper
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    
+}
+#crud 
+{
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    
+}
+#crud caption
+{
+    background-color:var(--color-one);
+    border-radius: 0.5rem;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 1.5rem;
+    
+}
+#crud thead
+{
+    background-color:aliceblue;
+    
+   
+}
+
+#crud tbody td
+{
+    border-bottom: 1px solid #009688;
+    color: #666565;
+    padding: 10px;
+}
+#crud tbody td button,.add-data
+{
+
+    border:none;
+    background: transparent;
+
+    font-size: .9rem;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#crud tbody td button.edit
+{
+    background-color:#009688;
+}
+#crud tbody td button.delete
+{
+    background-color:#e91e63;
+}
+.add-data
+{
+    background-color: #009688;
+   margin-top: 20px;
+   padding: 10px 20px;
+   
+}
+.popup
+{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0, 0,.4);
+    display:none ;
+    place-items: center;
+}
+.popup.active
+{
+    display: grid;
+    animation: show .7s ease-in-out;
+}
+
+@keyframes show
+{   0%
+    {
+        transform: translateY(-100%);
+    }
+    100%
+    {
+        transform: translateY(0);
+    }
+}
+
+
+/*-------POPUP-------*/
+
+.modify-data{
+    
+    width: 100px;
+    background-color: #009688;
+    color: white;
+    border-radius: 0.5rem;
+        padding: 10px;
+
+    text-align: center;
+
+}
+
+.modify-distance, .modify-angle{
+    
+    width: 100px;
+    background-color: #009688;
+    color: white;
+    border-radius: 0.5rem;
+        padding: 10px;
+
+    text-align: center;
+
+}
+
+.update_result_btn {
+    
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+.update-result {
+    
+    margin: 0 auto;
+    width: 100px;
+    background-color: #009688;
+    color: white;
+    border-radius: 0.5rem;
+        padding: 10px;
+    text-align: center;
+
+}
+
+
+.distance-box {
+    
+    width: auto;
+    display: flex;
+    gap: 0.5rem; 
+}
+
+.student {
+    display: none;
+}

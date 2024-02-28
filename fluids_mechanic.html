@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2d125606f6.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  
+ 
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/mechanics.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/regression@2.0.1/dist/regression.min.js"></script>
+
+    <div class="loginBox">
+        <form id="login-form" style="display: block;">
+            <div class="form-elements-container">
+              <label for="input-email"><b>Email</b></label>
+              <input type="text" placeholder="Enter Email" id="input-email" required>
+        
+              <label for="input-password"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" id="input-password" required>
+        
+              <button type="submit" id="login-button">Login</button>
+              <p id="error-message" style="color:red;"></p>
+              <a id="google-login">Google login</a>
+            </div>
+          </form>
+          <a id="back-button" href="./index.html">Back</a>
+    </div>
+    <div class="container" style="display: none;">
+        <div class="sidebar">
+            <div class="toggler">
+                <div class="logo">
+                    <i class="fa-brands fa-drupal"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="search">
+                <button class="bi-search"></button>
+                <input type="text" placeholder="Search">
+            </div>
+            <ul>
+                <li>
+                    <a href="#" class="dashboard_btn">
+                        <i class="fa-solid fa-house icon"></i>
+                        <span class="text">Dashboard</span> 
+                    </a>
+                    <span class="title">Dashboard</span> 
+                </li>
+                <li>
+                    <a href="#" class="test_btn">
+                        <i class="fa-solid fa-vr-cardboard icon"></i>
+                        <span class="text">Info</span> 
+                    </a>
+                    <span class="title">Info</span> 
+                </li>
+                <li>
+                    <a class="SignOut">
+                        <i class="fa-solid fa-circle-arrow-left icon"></i>
+                        <span class="text nowrap">SignOut</span>
+                    </a>
+                    <span class="title">SignOut</span>
+                </li>
+                <li>
+                    <a href="./index.html">
+                        <i class="fa-solid fa-circle-arrow-left icon"></i>
+                        <span class="text nowrap">Back</span>
+                    </a>
+                    <span class="title">Back</span>
+                </li>
+            </ul>
+        </div>
+        <div class="navigation">
+            <ul id="naviga">
+                <li class="list active">
+                    <a href="#" class="dashboard_btn_nav">
+                        <span class="icon">
+                            <i class="fa-solid fa-house"></i>
+                        </span>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#" class="test_btn_nav">
+                        <span class="icon">
+                            <i class="fa-solid fa-vr-cardboard"></i>
+                        </span>
+                        <span class="text">info</span>
+                    </a>
+                </li>
+                
+                <li class="list">
+                    <a href="./index.html" onclick="show('home')">
+                        <span class="icon">
+                            <i class="fa-solid fa-circle-arrow-left"></i>
+                        </span>
+                        <span class="text">Back</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+        <main>
+            <div class="dashboard">
+                <h1>Dashboard</h1>
+                <div class="general-box">
+                    <h2>Reset</h2>
+                    <div class="reset-box">
+                        <button class="delete-all-data">Delete data</button>
+                    </div>
+                    
+                </div>
+                <div class="general-box">
+                    <div class="wrapper">
+                        <table id="crud">
+                            <caption>Data</caption>
+                            <thead id="thead_1">
+                                <tr>
+                                    <td style="display: none;">ID</td>
+                                    <td>No</td>
+                                    <td>Freq_1 [Hz]</td>
+                                    <td>Caud_1 [L/m]</td>
+                                    <td>Freq_2 [Hz]</td>
+                                    <td>Caud_2 [L/m]</td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody_1">
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="test">
+                <h1>Ecuaciones usadas:</h1>
+                <div class="general-box">
+                    <h2 style="width: 30rem;">Caudal:</h2>
+                    
+                    <div align = center> 
+                        <h1>\[Q = {{V} \over t}\]</h1>
+                        
+                        <h3 align = left>Donde:</h3>
+                        
+                        <h2 style="display:inline;">\(Q\)</h2> <h4 style="display:inline;">: Caudal.</h4>
+                        <br>
+                        <h2 style="display:inline;">\(V\)</h2> <h4 style="display:inline;">: volumen </h4><h4 style="display:inline;">\([s].\)</h4>
+                        <br>
+                        <h2 style="display:inline;">\(t_n\)</h2> <h4 style="display:inline;">: Tiempo "n" </h4><h4 style="display:inline;">\([s].\)</h4>
+                        <br>
+                    </div>   
+
+                    <h2>Balance de Bernoulli:</h2>
+                                            
+                    <div align = center> 
+                        <h1>\[{1 \over 2}{v_t^2 \over g}+{P_1 \over pg} + Z_1 = {1 v_2^2 \over 2g}+{P_2 \over pg}+Z_2\]</h1>
+                        
+
+                        <h3 align = left>Donde:</h3>
+                        
+                        <h2 style="display:inline;">\(V_1\)</h2> <h4 style="display:inline;">: Velocidad del fluido del punto 1 </h4><h4 style="display:inline;"></h4>
+                        <br>
+                        <h2 style="display:inline;">\(V_2\)</h2> <h4 style="display:inline;">: Velocidad del fluido del punto 2</h4><h4 style="display:inline;"></h4>
+                        <br>
+                        <h2 style="display:inline;">\(P_1\)</h2> <h4 style="display:inline;">:  Presión del punto 1 (Pa)</h4><h4 style="display:inline;"></h4>
+                        <br>
+                        <h2 style="display:inline;">\(P_2\)</h2> <h4 style="display:inline;">: Presión del punto 2 (Pa) </h4><h4 style="display:inline;">\([s].\)</h4>
+                        <br>
+                    </div> 
+
+                    
+
+
+
+                </div>
+            </div>
+            <div class="general-box logout-active" >
+                <h2>Log Out</h2>
+                <button class="delete-all-data SignOut">Log Out</button>
+            </div>
+        </main>
+       
+    </div>
+
+    <script type="module" src="./scripts/main2.js"></script>
+    <script type="module" src="./scripts/mechanics.js"></script>
+</body>
+</html>
